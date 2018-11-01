@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="locationSelectActivity"
+            type="com.omi.ui.activity.utils.amap.LocationSelectActivity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.omi.ui.widget.TopNavigationBar
+            style="@style/TopBarStyle"
+            omi:centerText="@string/select_location"
+            omi:leftClick="@{@string/top_left_click}"
+            omi:rightClick="@{@string/top_right_click}"
+            omi:rightText="@string/confirm" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.amap.api.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/select_location" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:onClick="@{locationSelectActivity.onBackLocationClick}"
+                android:src="@mipmap/location_back" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/locationTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textColor="@color/text_color"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</layout>

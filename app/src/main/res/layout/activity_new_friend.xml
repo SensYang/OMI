@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="layoutManager"
+            type="android.support.v7.widget.RecyclerView.LayoutManager"/>
+
+        <variable
+            name="adapter"
+            type="android.support.v7.widget.RecyclerView.Adapter"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.omi.ui.widget.TopNavigationBar
+            style="@style/TopBarStyle"
+            omi:centerText="@string/new_friend"
+            omi:leftClick="@{@string/top_left_click}"
+            omi:rightClick="@{@string/top_right_click}"
+            omi:rightText="@string/add_friend"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            omi:adapter="@{adapter}"
+            omi:layoutManager="@{layoutManager}"/>
+    </LinearLayout>
+</layout>

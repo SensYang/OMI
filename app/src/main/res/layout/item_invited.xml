@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="invited"
+            type="com.omi.bean.account.ContactInvited"/>
+
+        <variable
+            name="adapter"
+            type="com.omi.ui.adapter.contact.NewFriendAdapter"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:src="@{invited.userHead}"
+                omi:error="@{@drawable/default_head}"
+                omi:leftBottomRadius="@{@dimen/dimen_3}"
+                omi:leftTopRadius="@{@dimen/dimen_3}"
+                omi:rightBottomRadius="@{@dimen/dimen_3}"
+                omi:rightTopRadius="@{@dimen/dimen_3}"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{invited.nickName??invited.username}"
+                    android:textColor="@color/text_color"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:text="@{invited.reason??@string/reason_hint}"
+                    android:textColor="@color/text_less_color"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@{invited.hasAdd==invited.hasDecline?@drawable/shape_box_main_5:null}"
+                android:gravity="center"
+                android:onClick="@{()->adapter.onDeclineClick(invited)}"
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
+                android:text="@string/decline"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="@{invited.hasAdd==invited.hasDecline?View.VISIBLE:View.GONE}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@{invited.hasAdd==invited.hasDecline?@drawable/shape_box_main_5:null}"
+                android:gravity="center"
+                android:onClick="@{()->adapter.onAgreeClick(invited)}"
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
+                android:text="@string/receive"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="@{invited.hasAdd==invited.hasDecline?View.VISIBLE:View.GONE}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{invited.hasAdd?@string/has_added:(invited.hasDecline?@string/has_decline:null)}"
+                android:textColor="@color/text_less_color"
+                android:textSize="12sp"
+                android:visibility="@{invited.hasAdd==invited.hasDecline?View.GONE:View.VISIBLE}"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

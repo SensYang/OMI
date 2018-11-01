@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="adapter"
+            type="com.omi.ui.adapter.contact.CreatGroupAdapter"/>
+
+        <variable
+            name="user"
+            type="com.omi.bean.User.Data"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:onClick="@{()->adapter.onUserClick(user)}"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:layout_marginLeft="13dp"
+            android:gravity="center_vertical"
+            android:text="@{user.headerString}"
+            android:textColor="@color/text_color"
+            android:textSize="7sp"
+            android:visibility="@{user.topOne?View.VISIBLE:View.GONE}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:src="@{user.member_avatar}"
+                omi:error="@{@drawable/default_head}"
+                omi:leftBottomRadius="@{@dimen/dimen_3}"
+                omi:leftTopRadius="@{@dimen/dimen_3}"
+                omi:placeholder="@{@drawable/default_head}"
+                omi:rightBottomRadius="@{@dimen/dimen_3}"
+                omi:rightTopRadius="@{@dimen/dimen_3}"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:text="@{user.member_nickname}"
+                android:textColor="@color/text_color"
+                android:textSize="12sp"/>
+
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:src="@{user.select?@drawable/people_select:@drawable/people_normal}"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

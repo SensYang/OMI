@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="rechargeFlowActivity"
+            type="com.omi.ui.activity.recharge.RechargeFlowActivity"/>
+
+        <variable
+            name="adapter"
+            type="android.support.v7.widget.RecyclerView.Adapter"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+        <com.omi.ui.widget.TopNavigationBar
+            style="@style/TopBarStyle"
+            omi:centerText="@string/flow_recharge"
+            omi:leftClick="@{@string/top_left_click}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="卡号"
+                android:textColor="@color/text_color"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:inputType="phone"
+                android:text="@={rechargeFlowActivity.cardNum}"
+                android:textColor="@color/text_color"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="20dp"
+                android:paddingLeft="13dp"
+                android:paddingRight="13dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="请选择流量包"
+                    android:textColor="@color/text_color"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    omi:adapter="@{adapter}"
+                    omi:layoutManager="GridLayoutManager"
+                    omi:spanCount="3"/>
+
+                <TextView
+                    android:layout_width="85dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/shape_box_main_5"
+                    android:gravity="center"
+                    android:onClick="@{(view)->rechargeFlowActivity.rechargeClick(view)}"
+                    android:text="充值"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

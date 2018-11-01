@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="dynamicAdapter"
+            type="com.omi.ui.adapter.dynamic.DynamicAdapter"/>
+
+        <variable
+            name="dynamic"
+            type="com.omi.bean.dynamic.Dynamic.Data"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/side_margin"
+        android:layout_marginRight="@dimen/side_margin"
+        android:layout_marginTop="21dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:onClick="@{(view)->dynamicAdapter.onUserClick(view,dynamic.fbz_member_name)}"
+            android:src="@{dynamic.fbz_member_avatar}"
+            omi:error="@{@drawable/default_head}"
+            omi:leftBottomRadius="@{@dimen/dimen_3}"
+            omi:leftTopRadius="@{@dimen/dimen_3}"
+            omi:placeholder="@{@drawable/default_head}"
+            omi:rightBottomRadius="@{@dimen/dimen_3}"
+            omi:rightTopRadius="@{@dimen/dimen_3}"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="@{dynamic.fbz_member_nickname}"
+                android:textColor="@color/text_color"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:maxLines="1"
+                android:text="@{dynamic.timeWithLocation}"
+                android:textColor="@color/text_less_color"
+                android:textSize="8sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

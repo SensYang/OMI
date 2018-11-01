@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isShowNewDot"
+            type="Boolean"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topbar_height">
+
+        <RelativeLayout
+            android:id="@+id/leftRL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minWidth="33dp"
+            android:paddingLeft="15dp">
+
+            <ImageView
+                android:id="@+id/leftIV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                android:adjustViewBounds="true"
+                android:paddingRight="3.5dp"
+                android:src="@mipmap/back_btn"
+                tools:ignore="ContentDescription"/>
+
+            <View
+                android:id="@+id/leftNewDot"
+                style="@style/newDotStyle"
+                android:layout_alignRight="@id/leftIV"
+                android:layout_alignTop="@id/leftIV"
+                android:layout_marginTop="-3.5dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/leftTV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/leftIV"
+                android:gravity="right|center_vertical"
+                android:lines="1"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/centerTV"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:textColor="@color/white"
+            android:textSize="19sp"/>
+
+        <ImageView
+            android:id="@+id/topBarRightSecond"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toLeftOf="@+id/rightLL"
+            android:visibility="gone"
+            tools:ignore="ContentDescription"/>
+
+        <LinearLayout
+            android:id="@+id/rightLL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:minWidth="33dp"
+            android:orientation="horizontal"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:id="@+id/rightTV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="right|center_vertical"
+                android:lines="1"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/rightIV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                android:adjustViewBounds="true"
+                tools:ignore="ContentDescription"/>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

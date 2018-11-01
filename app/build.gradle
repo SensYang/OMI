@@ -1,0 +1,112 @@
+apply plugin: 'com.android.application'
+
+android {
+    useLibrary 'org.apache.http.legacy'
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    defaultConfig {
+        applicationId "com.omi"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        // dex突破65535的限制
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {// 设置支持的SO库架构
+            abiFilters 'armeabi-v7a'//, 'arm64-v8a', 'x86_6 4'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled true
+    }
+    //执行lint检查，有任何的错误或者警告提示，都会终止构建，我们可以将其关掉。
+    lintOptions {
+        //build release 版本 时 开启lint 检测
+        checkReleaseBuilds true
+        //lint 遇到 error 时继续 构建
+        abortOnError false
+    }
+    //签名
+    signingConfigs {
+        debug {
+            storeFile file("$rootDir/omirelease.jks")
+            storePassword "omi2501"
+            keyAlias "omi"
+            keyPassword "omi2501"
+        }
+        release {
+            storeFile file("$rootDir/omirelease.jks")
+            storePassword "omi2501"
+            keyAlias "omi"
+            keyPassword "omi2501"
+        }
+    }
+    //混淆
+    buildTypes {
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //混淆
+            minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            //加载默认混淆配置文件 progudard-android.txt在sdk目录里面，不用管，proguard-rules.pro是我们自己配的混淆文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //签名
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //签名
+            signingConfig signingConfigs.debug
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    productFlavors {
+        omiself {}
+        productFlavors.all { flavor -> flavor.manifestPlaceholders = [CHANNEL_VALUE: name]
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:multidex:+'
+    compile 'com.android.support:support-v4:+'
+    //json框架
+    compile 'com.google.code.gson:gson:2.8.0'
+    //网络框架
+    compile 'com.yanzhenjie.nohttp:nohttp:1.1.1'
+    //图片框架
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //列表
+    compile 'com.android.support:recyclerview-v7:+'
+    //友盟统计
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    //腾讯bugly
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    //环信
+    compile 'com.hyphenate:hyphenate-sdk-lite:3.3.0'
+    //二维码
+    compile 'com.journeyapps:zxing-android-embedded:3.3.0'
+}

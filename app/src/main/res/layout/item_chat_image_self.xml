@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.omi.utils.controller.ChatItemControl"/>
+
+        <import type="com.omi.net.ApiByHttp"/>
+
+        <variable
+            name="message"
+            type="com.omi.bean.chat.IMMessage"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/include_chat_time"
+            omi:message="@{message}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="5dp"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <include
+                layout="@layout/include_chat_has_send"
+                omi:message="@{message}"/>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="13dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/chat_box_self"
+                android:maxWidth="176dp"
+                android:minHeight="60dp"
+                android:minWidth="107dp"
+                android:onClick="@{(view)->ChatItemControl.instance.onImageClick(view,message)}"
+                android:src="@{message.content??message.thumbnailUrl}"/>
+
+            <include
+                layout="@layout/include_chat_head"
+                omi:head="@{ApiByHttp.instance.user.member_avatar}"
+                omi:userid="@{ApiByHttp.instance.user.member_name}"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

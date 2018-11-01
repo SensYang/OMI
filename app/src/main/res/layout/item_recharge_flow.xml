@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="position"
+            type="Integer"/>
+
+        <variable
+            name="selectAt"
+            type="android.databinding.ObservableInt"/>
+
+        <variable
+            name="flow"
+            type="com.omi.bean.recharge.Flow.Data"/>
+
+        <variable
+            name="rechargeFlowAdapter"
+            type="com.omi.ui.adapter.recharge.RechargeFlowAdapter"/>
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="81.6dp"
+            android:layout_height="46dp"
+            android:background="@{selectAt==position?@drawable/shape_box_main_3:@drawable/shape_box_trans_main_3_1}"
+            android:gravity="center"
+            android:onClick="@{()->rechargeFlowAdapter.onFlowClick(position)}"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{flow.flowCount}"
+                android:textColor="@{selectAt==position?@color/white:@color/main_color}"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@{flow.flowPrice}"
+                android:textColor="@{selectAt==position?@color/white:@color/main_color}"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+</layout>

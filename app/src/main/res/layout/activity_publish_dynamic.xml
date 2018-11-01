@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="location"
+            type="String"/>
+
+        <variable
+            name="adapter"
+            type="android.support.v7.widget.RecyclerView.Adapter"/>
+
+        <variable
+            name="publish"
+            type="com.omi.ui.activity.dynamic.PublishDynamicActivity"/>
+
+        <variable
+            name="isForward"
+            type="Boolean"/>
+
+        <variable
+            name="name"
+            type="String"/>
+
+        <variable
+            name="content"
+            type="String"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:omi="http://schemas.android.com/apk/res-auto"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <com.omi.ui.widget.TopNavigationBar
+                style="@style/TopBarStyle"
+                omi:centerText="@string/publish_dynamic"
+                omi:leftClick="@{@string/top_left_click}"
+                omi:rightClick="@{@string/top_right_click}"
+                omi:rightText="@string/publish"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="113dp"
+                android:background="@null"
+                android:gravity="start"
+                android:hint="@string/dynamic_hint"
+                android:padding="13dp"
+                android:text="@={publish.content}"
+                android:textColor="@color/text_color"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="67dp"
+                android:orientation="horizontal"
+                android:paddingLeft="13dp"
+                android:paddingRight="13dp"
+                android:visibility="@{isForward?View.GONE:View.VISIBLE}">
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    omi:adapter="@{adapter}"
+                    omi:layoutManager="LinearLayoutManager"/>
+
+                <ImageView
+                    android:layout_width="67dp"
+                    android:layout_height="67dp"
+                    android:layout_marginLeft="5dp"
+                    android:onClick="@{(view)->publish.onSelectClick(view)}"
+                    android:src="@mipmap/select_img"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="67dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:background="@color/background"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:visibility="@{isForward?View.VISIBLE:View.GONE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{name}"
+                    android:textColor="@color/text_color"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{content}"
+                    android:textColor="@color/text_color"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="13dp"
+                android:paddingRight="13dp"
+                android:paddingTop="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(view)->publish.onLocationClick(view)}"
+                    android:src="@mipmap/location_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:onClick="@{(view)->publish.onLocationClick(view)}"
+                    android:text="@{location}"
+                    android:textColor="@color/text_less_color"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

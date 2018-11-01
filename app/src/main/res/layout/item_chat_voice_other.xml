@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.omi.utils.controller.ChatItemControl"/>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="message"
+            type="com.omi.bean.chat.IMMessage"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/include_chat_time"
+            omi:message="@{message}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <include
+                layout="@layout/include_chat_head"
+                omi:head="@{message.fromHead}"
+                omi:userid="@{message.from}"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="39dp"
+                android:layout_marginLeft="13dp"
+                android:background="@drawable/chat_box_other"
+                android:gravity="center_vertical"
+                android:maxWidth="176dp"
+                android:onClick="@{(view)->ChatItemControl.instance.voiceClick(view,message)}"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/voice_2"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@{message.durationString}"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/shape_oval_message_red"
+                android:visibility="@{message.hasRead?View.GONE:View.VISIBLE}"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

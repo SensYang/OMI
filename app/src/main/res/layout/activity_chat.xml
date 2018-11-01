@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="chatWith"
+            type="String"/>
+
+        <variable
+            name="chatName"
+            type="String"/>
+
+        <variable
+            name="adapter"
+            type="android.support.v7.widget.RecyclerView.Adapter"/>
+
+        <variable
+            name="layoutManager"
+            type="android.support.v7.widget.RecyclerView.LayoutManager"/>
+
+        <variable
+            name="conversationType"
+            type="com.omi.bean.conversation.ConversationType"/>
+    </data>
+
+    <com.omi.ui.widget.ResizeListenerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        omi:inputView="@{chatControlView}"
+        omi:keyBoardListener="@{chatControlView}"
+        omi:touchOutListener="@{chatControlView}">
+
+        <com.omi.ui.widget.TopNavigationBar
+            android:id="@+id/topNavigationBar"
+            style="@style/TopBarStyle"
+            omi:centerText="@{chatName}"
+            omi:leftClick="@{@string/top_left_click}"
+            omi:rightClick="@{@string/top_right_click}"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                omi:adapter="@{adapter}"
+                omi:layoutManager="@{layoutManager}"
+                omi:stackFromEnd="true"/>
+            1
+
+            <ImageView
+                android:id="@+id/voiceIV"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/timeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="80dp"
+                android:textColor="@color/white"
+                android:textSize="25sp"/>
+        </FrameLayout>
+
+        <com.omi.ui.widget.ChatControlView
+            android:id="@+id/chatControlView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            omi:chatWith="@{chatWith}"
+            omi:conversationType="@{conversationType}"
+            omi:layoutManager="@{layoutManager}"
+            omi:timeTV="@{timeTV}"
+            omi:voiceIV="@{voiceIV}"/>
+    </com.omi.ui.widget.ResizeListenerLayout>
+</layout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.omi.bean.chat.ChatMoreBoard" />
+
+        <import type="com.omi.R.string" />
+
+        <variable
+            name="chatMoreBroadView"
+            type="com.omi.ui.widget.ChatMoreBroadView" />
+
+        <variable
+            name="chatMoreBoard"
+            type="ChatMoreBoard" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:onClick="@{()->chatMoreBroadView.onItemClick(chatMoreBoard)}"
+        android:orientation="vertical"
+        android:visibility="@{chatMoreBoard==null?View.GONE:View.VISIBLE}">
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@{chatMoreBoard==null?@color/empty:chatMoreBoard.imgRes}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="@{chatMoreBoard==null?string.empty:chatMoreBoard.textRes}"
+            android:textColor="@color/text_color"
+            android:textSize="12sp" />
+    </LinearLayout>
+</layout>

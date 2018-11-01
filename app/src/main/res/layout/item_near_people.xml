@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="nearPeopleAdapter"
+            type="com.omi.ui.adapter.near.NearPeopleAdapter"/>
+
+        <variable
+            name="user"
+            type="com.omi.bean.User.Data"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0.5dp"
+        android:background="@color/white"
+        android:onClick="@{(view)->nearPeopleAdapter.onUserClick(view,user)}"
+        android:orientation="horizontal"
+        android:paddingBottom="7dp"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp"
+        android:paddingTop="7dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@{user.member_avatar}"
+            omi:error="@{@drawable/default_head}"
+            omi:leftBottomRadius="@{@dimen/dimen_3}"
+            omi:leftTopRadius="@{@dimen/dimen_3}"
+            omi:rightBottomRadius="@{@dimen/dimen_3}"
+            omi:rightTopRadius="@{@dimen/dimen_3}"/>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="@{user.member_nickname}"
+                android:textColor="@color/text_color"
+                android:textSize="16sp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="2dp"
+                android:background="@{user.boy?@drawable/shape_box_main_3:@drawable/shape_box_girl_3}"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="7dp"
+                    android:adjustViewBounds="true"
+                    android:src="@{user.boy?@drawable/icon_boy:@drawable/icon_girl}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:maxLines="1"
+                    android:text="@{user.member_age}"
+                    android:textColor="@color/white"
+                    android:textSize="9dp"/>
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:maxLines="1"
+                android:text="@{user.member_signature}"
+                android:textColor="@color/text_less_color"
+                android:textSize="14sp"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@{user.distance}"
+            android:textColor="@color/text_less_color"
+            android:textSize="12sp"/>
+    </LinearLayout>
+</layout>

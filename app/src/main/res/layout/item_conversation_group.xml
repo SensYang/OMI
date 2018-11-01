@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="conversationAdapter"
+            type="com.omi.ui.adapter.ConversationAdapter"/>
+
+        <variable
+            name="conversation"
+            type="com.omi.bean.conversation.Conversation"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:layout_marginBottom="0.5dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:onClick="@{conversationAdapter.onItemClick}"
+        android:orientation="horizontal"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp"
+        android:tag="@{conversation}">
+
+        <include
+            layout="@layout/include_group_head"
+            omi:headList="@{conversation.headList}"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginLeft="13dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:text="@{conversation.fromName}"
+                    android:textColor="@color/text_color"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{conversation.messageCreateTimeString}"
+                    android:textColor="@color/text_less_color"
+                    android:textSize="9sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:text="@{conversation.messageDetial}"
+                    android:textColor="@color/text_less_color"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_box_message_red9"
+                    android:maxLines="1"
+                    android:paddingBottom="1dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@{conversation.unReadCountString}"
+                    android:textColor="@color/white"
+                    android:textSize="9sp"
+                    android:visibility="@{conversation.unReadCount>0?View.VISIBLE:View.GONE}"/>
+
+            </LinearLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>

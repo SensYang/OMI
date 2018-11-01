@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="chatControlView"
+            type="com.omi.ui.widget.ChatControlView"/>
+
+        <variable
+            name="conversationType"
+            type="com.omi.bean.conversation.ConversationType"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_color"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="13dp"
+            android:paddingRight="8dp"
+            android:paddingTop="5dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="bottom"
+                android:adjustViewBounds="true"
+                android:onClick="@{chatControlView.onVoiceClick}"
+                android:src="@{chatControlView.voiceState?@drawable/chat_icon_keyboard:@drawable/chat_icon_voice}"/>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/contentET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_background"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="left|top"
+                    android:maxHeight="100dp"
+                    android:maxLength="5000"
+                    android:minHeight="32dp"
+                    android:padding="5dp"
+                    android:textColor="@color/text_color"
+                    android:textSize="16sp"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:background="@drawable/shape_box_main_5"
+                    android:gravity="center"
+                    android:onTouchListener="@{chatControlView.voiceTouchListener}"
+                    android:text="@{chatControlView.voicePress?(chatControlView.voiceCancle?@string/relax_over:@string/relax_send):@string/press_speak}"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:visibility="@{chatControlView.voiceState?View.VISIBLE:View.GONE}"/>
+            </FrameLayout>
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="bottom"
+                android:layout_marginRight="5dp"
+                android:adjustViewBounds="true"
+                android:onClick="@{chatControlView.onFaceClick}"
+                android:src="@{chatControlView.faceState?@drawable/chat_icon_keyboard:@drawable/chat_icon_face}"/>
+
+            <FrameLayout
+                android:layout_width="42dp"
+                android:layout_height="32dp"
+                android:layout_gravity="bottom|center_horizontal">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:background="@drawable/shape_box_main_5"
+                    android:onClick="@{chatControlView.onSendClick}"
+                    android:text="@string/send"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:visibility="@{chatControlView.canSendText?(chatControlView.voiceState?View.GONE:View.VISIBLE):View.GONE}"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:adjustViewBounds="true"
+                    android:onClick="@{chatControlView.onMoreClick}"
+                    android:src="@drawable/chat_icon_more"
+                    android:visibility="@{chatControlView.canSendText?(chatControlView.voiceState?View.VISIBLE:View.GONE):View.VISIBLE}"/>
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <com.omi.ui.widget.ChatExtensionBroadView
+            android:id="@+id/chatExtensionBroadView"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:visibility="gone"
+            omi:controlView="@{chatControlView}"
+            omi:conversationType="@{conversationType}"
+            omi:height="@{chatControlView.moreBoardHeight}"
+            omi:showFaceBroad="@{chatControlView.faceState}"
+            omi:showMoreBroad="@{chatControlView.moreState}"/>
+    </LinearLayout>
+</layout>

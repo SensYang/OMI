@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.omi.utils.controller.ChatItemControl"/>
+
+        <variable
+            name="head"
+            type="String"/>
+
+        <variable
+            name="userid"
+            type="String"/>
+    </data>
+
+    <ImageView
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:onClick="@{(view)->ChatItemControl.instance.onHeadClick(view,userid)}"
+        android:src="@{head}"
+        omi:error="@{@drawable/default_head}"
+        omi:leftBottomRadius="@{@dimen/dimen_3}"
+        omi:leftTopRadius="@{@dimen/dimen_3}"
+        omi:placeholder="@{@drawable/default_head}"
+        omi:rightBottomRadius="@{@dimen/dimen_3}"
+        omi:rightTopRadius="@{@dimen/dimen_3}"/>
+</layout>

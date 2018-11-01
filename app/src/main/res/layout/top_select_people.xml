@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="adapter"
+            type="com.omi.ui.adapter.contact.CreatGroupAdapter"/>
+    </data>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginBottom="1dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:onClick="@{adapter.onSelectClick}"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp"
+        android:text="@string/select_group"
+        android:textColor="@color/text_color"
+        android:textSize="12sp"/>
+
+</layout>

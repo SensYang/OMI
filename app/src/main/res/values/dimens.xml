@@ -1,0 +1,10 @@
+<resources>
+    <dimen name="topbar_height">50dp</dimen>
+    <dimen name="side_margin">13dp</dimen>
+    <dimen name="phone_num">70dp</dimen>
+    <dimen name="phone_num_margin">8dp</dimen>
+    <dimen name="phone_top_width">242dp</dimen>
+    <dimen name="dimen_3">3dp</dimen>
+    <dimen name="dimen_1">1dp</dimen>
+
+</resources>

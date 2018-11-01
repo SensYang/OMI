@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="hasNewGroup"
+            type="android.databinding.ObservableBoolean"/>
+
+        <variable
+            name="contactsAdapter"
+            type="com.omi.ui.adapter.ContactsAdapter"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:onClick="@{contactsAdapter.onGroupClick}"
+        android:orientation="horizontal"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp">
+
+        <ImageView
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:src="@mipmap/icon_my_group"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:maxLines="1"
+            android:text="@string/my_group"
+            android:textColor="@color/text_color"
+            android:textSize="12sp"/>
+
+        <View
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginLeft="-3dp"
+            android:layout_marginTop="-6dp"
+            android:background="@drawable/shape_oval_message_red"
+            android:visibility="@{hasNewGroup?View.VISIBLE:View.GONE}"/>
+    </LinearLayout>
+
+</layout>

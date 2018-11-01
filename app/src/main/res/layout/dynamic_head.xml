@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="dynamicAdapter"
+            type="com.omi.ui.adapter.dynamic.DynamicAdapter"/>
+
+        <variable
+            name="user"
+            type="com.omi.bean.User.Data"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/dynamic_back"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="13dp"
+            android:layout_marginLeft="@dimen/side_margin"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:onClick="@{dynamicAdapter.onSelfHeadClick}"
+                android:src="@{user.member_avatar==null?@drawable/default_head:user.member_avatar}"
+                omi:leftBottomRadius="@{@dimen/dimen_3}"
+                omi:leftTopRadius="@{@dimen/dimen_3}"
+                omi:rightBottomRadius="@{@dimen/dimen_3}"
+                omi:rightTopRadius="@{@dimen/dimen_3}"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/side_margin"
+                android:layout_marginRight="@dimen/side_margin"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{user.member_nickname??user.member_name}"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:maxLines="1"
+                    android:text="@{@string/signature+user.member_signature}"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

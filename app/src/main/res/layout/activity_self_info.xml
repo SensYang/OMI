@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+<variable
+    name="selfInfoActivity"
+    type="com.omi.ui.activity.user.SelfInfoActivity"/>
+        <variable
+            name="user"
+            type="com.omi.bean.UserVO"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.omi.ui.widget.TopNavigationBar
+            style="@style/TopBarStyle"
+            omi:centerText="@string/self_center"
+            omi:rightText="@string/save"
+            omi:leftClick="@{@string/top_left_click}"
+            omi:rightClick="@{@string/top_right_click}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="83dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:onClick="@{(view)->selfInfoActivity.onHeadClick(view)}"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/fbz_member_avatar"
+                android:textColor="@color/text_color"
+                android:textSize="14sp"/>
+
+            <ImageView
+                android:id="@+id/headIV"
+                android:layout_width="67dp"
+                android:layout_height="67dp"
+                android:src="@{user.avatar}"
+                omi:error="@{@drawable/default_head}"
+                omi:leftBottomRadius="@{@dimen/dimen_3}"
+                omi:leftTopRadius="@{@dimen/dimen_3}"
+                omi:placeholder="@{@drawable/default_head}"
+                omi:rightBottomRadius="@{@dimen/dimen_3}"
+                omi:rightTopRadius="@{@dimen/dimen_3}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0.5dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:minHeight="47dp"
+            android:onClick="@{(view)->selfInfoActivity.onSexClick(view)}"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sex"
+                android:textColor="@color/text_color"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@{user.member_sex??@string/not_fill}"
+                android:textColor="@color/text_less_color"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0.5dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:minHeight="47dp"
+            android:onClick="@{(view)->selfInfoActivity.onAgeClick(view)}"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/age"
+                android:textColor="@color/text_color"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@{user.member_age??@string/not_fill}"
+                android:textColor="@color/text_less_color"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0.5dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:minHeight="47dp"
+            android:onClick="@{(view)->selfInfoActivity.onNicknameClick(view)}"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/nickname"
+                android:textColor="@color/text_color"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@{user.member_nickname??@string/not_fill}"
+                android:textColor="@color/text_less_color"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0.5dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:minHeight="47dp"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/_account"
+                android:textColor="@color/text_color"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@{user.member_name??@string/not_fill}"
+                android:textColor="@color/text_less_color"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:minHeight="47dp"
+            android:onClick="@{(view)->selfInfoActivity.onAreaClick(view)}"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/area"
+                android:textColor="@color/text_color"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@{user.member_areainfo??@string/not_fill}"
+                android:textColor="@color/text_less_color"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0.5dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:minHeight="47dp"
+            android:onClick="@{(view)->selfInfoActivity.onSignatureClick(view)}"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/_signature"
+                android:textColor="@color/text_color"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@{user.member_signature??@string/not_fill}"
+                android:textColor="@color/text_less_color"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0.5dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:minHeight="47dp"
+            android:onClick="@{(view)->selfInfoActivity.onQrClick(view)}"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/my_qrcard"
+                android:textColor="@color/text_color"
+                android:textSize="14sp"/>
+
+            <ImageView
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/qr_icon"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

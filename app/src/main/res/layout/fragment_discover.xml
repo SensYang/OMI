@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="discoverClickCallback"
+            type="com.omi.ui.activity.main.DiscoverFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.omi.ui.widget.TopNavigationBar
+            android:id="@+id/topNavigationBar"
+            style="@style/TopBarStyle"
+            omi:centerText="@string/discover"
+            omi:leftVisible="false"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_marginTop="17dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:onClick="@{discoverClickCallback.onDynamicClick}"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_marginLeft="@dimen/side_margin"
+                android:src="@mipmap/discover_dynamic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/side_margin"
+                android:text="@string/dynamic"
+                android:textColor="@color/text_color"
+                android:textSize="15sp" />
+
+            <View
+                android:id="@+id/newDot"
+                style="@style/newDotStyle"
+                android:layout_marginLeft="-3.5dp"
+                android:layout_marginTop="-7.5dp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <View style="@style/lineStyle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:onClick="@{discoverClickCallback.onNearClick}"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginLeft="@dimen/side_margin"
+                    android:src="@mipmap/discover_near" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/side_margin"
+                    android:text="@string/near_people"
+                    android:textColor="@color/text_color"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginTop="0.5dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:onClick="@{discoverClickCallback.onQrScanClick}"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginLeft="@dimen/side_margin"
+                    android:src="@mipmap/discover_qr_scan" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/side_margin"
+                    android:text="@string/qr_scan"
+                    android:textColor="@color/text_color"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View style="@style/lineStyle" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="group"
+            type="com.omi.bean.conversation.Group" />
+
+        <variable
+            name="adapter"
+            type="android.support.v7.widget.RecyclerView.Adapter" />
+
+        <variable
+            name="groupInfoActivity"
+            type="com.omi.ui.activity.user.GroupInfoActivity" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.omi.ui.widget.TopNavigationBar
+                style="@style/TopBarStyle"
+                omi:centerText="@string/group_info"
+                omi:leftClick="@{@string/top_left_click}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginBottom="0.5dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="13dp"
+                android:text='@{@string/group_name+"  "+group.groupName}'
+                android:textColor="@color/text_color" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="13dp"
+                android:text="@string/group_qr"
+                android:textColor="@color/text_color" />
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:text='@{@string/group_member+"("+group.memberCount+")"}'
+                    android:textColor="@color/text_color" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    omi:adapter="@{adapter}"
+                    omi:layoutManager="GridLayoutManager"
+                    omi:spanCount="5" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:onClick="@{(view)->groupInfoActivity.onTopChatClick(view)}"
+                android:orientation="horizontal"
+                android:paddingLeft="13dp"
+                android:paddingRight="13dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/top_chat"
+                    android:textColor="@color/text_color" />
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/screen_select_normal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:onClick="@{(view)->groupInfoActivity.onDisturbClick(view)}"
+                android:orientation="horizontal"
+                android:paddingLeft="13dp"
+                android:paddingRight="13dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/not_disturb"
+                    android:textColor="@color/text_color" />
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@{group.msgBlocked?@drawable/screen_select_pressed:@drawable/screen_select_normal}" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/shape_box_main_3"
+                android:gravity="center"
+                android:onClick="@{(view)->groupInfoActivity.onExitClick(view)}"
+                android:text="@{group.selfGroup?@string/destroy_group:@string/exit_group}"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

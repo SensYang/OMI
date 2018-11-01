@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="registerFragment"
+            type="com.omi.ui.activity.account.RegisterFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/include_account_element"
+            omi:accountElement="@{registerFragment.phone}" />
+
+        <include
+            layout="@layout/include_account_element"
+            omi:accountElement="@{registerFragment.verification}" />
+
+        <include
+            layout="@layout/include_account_element"
+            omi:accountElement="@{registerFragment.password}" />
+
+        <include
+            layout="@layout/include_account_element"
+            omi:accountElement="@{registerFragment.rePassword}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shape_box_main_50"
+            android:gravity="center"
+            android:onClick="@{registerFragment.onRegisteClick}"
+            android:text="@string/registe"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+</layout>

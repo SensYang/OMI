@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="keyBoardListener"
+            type="com.omi.ui.widget.ResizeListenerLayout.OnSoftKeyBoardListener"/>
+
+        <variable
+            name="touchOutListener"
+            type="com.omi.ui.widget.ResizeListenerLayout.OnTouchOutListener"/>
+
+        <variable
+            name="adapter"
+            type="android.support.v7.widget.RecyclerView.Adapter"/>
+
+        <variable
+            name="inputView"
+            type="android.view.View"/>
+    </data>
+
+    <com.omi.ui.widget.ResizeListenerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        omi:inputView="@{inputView}"
+        omi:keyBoardListener="@{keyBoardListener}"
+        omi:touchOutListener="@{touchOutListener}">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                omi:adapter="@{adapter}"
+                omi:layoutManager="LinearLayoutManager"/>
+
+            <com.omi.ui.widget.TopNavigationBar
+                android:id="@+id/topNavigationBar"
+                style="@style/TopBarStyle"
+                omi:centerText="@string/dynamic"
+                omi:leftClick="@{@string/top_left_click}"
+                omi:leftSrc="@mipmap/back_btn"
+                omi:rightClick="@{@string/top_right_click}"
+                omi:rightSrc="@mipmap/dynamic_edit"/>
+
+            <include layout="@layout/include_comment_box"/>
+        </FrameLayout>
+    </com.omi.ui.widget.ResizeListenerLayout>
+</layout>

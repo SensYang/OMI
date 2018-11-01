@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="message"
+            type="com.omi.bean.chat.IMMessage"/>
+    </data>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_box_chat_time_back2p5"
+        android:paddingBottom="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="6dp"
+        android:text="@{message.createTimeString}"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:visibility="@{message.timeVisibility?View.VISIBLE:View.GONE}" />
+</layout>

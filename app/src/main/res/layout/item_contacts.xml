@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="contactsAdapter"
+            type="com.omi.ui.adapter.ContactsAdapter"/>
+
+        <variable
+            name="contact"
+            type="com.omi.bean.account.Contact"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:onClick="@{()->contactsAdapter.onContactClick(contact)}"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:layout_marginLeft="13dp"
+            android:gravity="center_vertical"
+            android:text="@{contact.headerString}"
+            android:textColor="@color/text_color"
+            android:textSize="7sp"
+            android:visibility="@{contact.topOne?View.VISIBLE:View.GONE}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:text="@{contact.contact_name}"
+            android:textColor="@color/text_color"
+            android:textSize="12sp"/>
+    </LinearLayout>
+</layout>

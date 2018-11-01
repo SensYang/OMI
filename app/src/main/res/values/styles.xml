@@ -1,0 +1,67 @@
+<resources>
+    <!--程序启动动画-->
+    <style name="ActivityTransitions" parent="@android:style/Animation">
+        <item name="android:activityOpenEnterAnimation">@anim/open_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/open_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/close_enter</item>
+        <item name="android:activityCloseExitAnimation">@anim/close_exit</item>
+    </style>
+    <!-- parent="@android:style/Theme.Translucent.NoTitleBar"-->
+    <style name="LauncherTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowAnimationStyle">@style/ActivityTransitions</item>
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+    <!--导航栏风格-->
+    <style name="TopBarStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/topbar_height</item>
+    </style>
+
+    <!--分隔线风格-->
+    <style name="lineStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <!--分隔线风格-->
+    <style name="verticalStyle">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="newDotStyle">
+        <item name="android:layout_width">7dp</item>
+        <item name="android:layout_height">7dp</item>
+        <item name="android:background">@drawable/shape_oval_message_red</item>
+    </style>
+
+    <!--popupwindow的动画-->
+    <style name="nonePopAnim">
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@null</item>
+    </style>
+    <!-- 弹框样式  去除黑边 -->
+    <style name="Translucent.Dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    <!--电话按钮的风格-->
+    <style name="phoneNumStyle">
+        <item name="android:background">@drawable/selector_phone_num</item>
+        <item name="android:textColor">@color/phone_num_color</item>
+        <item name="android:layout_width">@dimen/phone_num</item>
+        <item name="android:layout_height">@dimen/phone_num</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:layout_margin">@dimen/phone_num_margin</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

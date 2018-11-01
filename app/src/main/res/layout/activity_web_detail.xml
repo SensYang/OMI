@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:omi="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.omi.ui.widget.TopNavigationBar
+        android:id="@+id/topNavigationBar"
+        style="@style/TopBarStyle"
+        omi:centerText="@string/app_name"
+        omi:leftText="@string/_close"/>
+
+    <com.omi.ui.widget.OmiWebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

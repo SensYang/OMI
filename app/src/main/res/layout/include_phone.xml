@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="phoneFragment"
+            type="com.omi.ui.activity.main.PhoneFragment"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_color"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="vertical"
+        android:visibility="@{phoneFragment.showHistory?View.GONE:View.VISIBLE}">
+
+        <FrameLayout
+            android:layout_width="@dimen/phone_top_width"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/phoneET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingRight="30dp"
+                android:paddingTop="5dp"
+                android:singleLine="true"
+                android:text="@={phoneFragment.phone}"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|right"
+                android:src="@mipmap/icon_del"
+                omi:onTouchListener="@{phoneFragment.repeatListener}"/>
+        </FrameLayout>
+
+        <View
+            style="@style/lineStyle"
+            android:layout_width="@dimen/phone_top_width"
+            android:layout_marginBottom="28dp"
+            android:background="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/phoneNumStyle"
+                android:onClick="@{()->phoneFragment.onPhoneClick(1)}"
+                android:text="1"/>
+
+            <TextView
+                style="@style/phoneNumStyle"
+                android:onClick="@{()->phoneFragment.onPhoneClick(2)}"
+                android:text="2"/>
+
+            <TextView
+                style="@style/phoneNumStyle"
+                android:onClick="@{()->phoneFragment.onPhoneClick(3)}"
+                android:text="3"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/phoneNumStyle"
+                android:onClick="@{()->phoneFragment.onPhoneClick(4)}"
+                android:text="4"/>
+
+            <TextView
+                style="@style/phoneNumStyle"
+                android:onClick="@{()->phoneFragment.onPhoneClick(5)}"
+                android:text="5"/>
+
+            <TextView
+                style="@style/phoneNumStyle"
+                android:onClick="@{()->phoneFragment.onPhoneClick(6)}"
+                android:text="6"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/phoneNumStyle"
+                android:onClick="@{()->phoneFragment.onPhoneClick(7)}"
+                android:text="7"/>
+
+            <TextView
+                style="@style/phoneNumStyle"
+                android:onClick="@{()->phoneFragment.onPhoneClick(8)}"
+                android:text="8"/>
+
+            <TextView
+                style="@style/phoneNumStyle"
+                android:onClick="@{()->phoneFragment.onPhoneClick(9)}"
+                android:text="9"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/phoneNumStyle"
+                android:onClick="@{()->phoneFragment.onPhoneClick(10)}"
+                android:text="*"/>
+
+            <TextView
+                style="@style/phoneNumStyle"
+                android:onClick="@{()->phoneFragment.onPhoneClick(0)}"
+                android:text="0"/>
+
+            <TextView
+                style="@style/phoneNumStyle"
+                android:onClick="@{()->phoneFragment.onPhoneClick(11)}"
+                android:text="#"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/phone_num"
+            android:layout_height="@dimen/phone_num"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@mipmap/icon_call"
+            android:onClick="@{()->phoneFragment.onPhoneClick(12)}"/>
+    </LinearLayout>
+</layout>

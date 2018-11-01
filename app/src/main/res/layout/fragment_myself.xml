@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="myselfFragment"
+            type="com.omi.ui.activity.main.MyselfFragment"/>
+
+        <import type="com.omi.net.ApiByHttp"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.omi.ui.widget.TopNavigationBar
+            android:id="@+id/topNavigationBar"
+            style="@style/TopBarStyle"
+            omi:centerText="@string/myself"
+            omi:leftVisible="false"
+            omi:rightSrc="@mipmap/setting"/>
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="60dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:onClick="@{myselfFragment.onSelfInfoClick}"
+                    android:orientation="horizontal"
+                    android:paddingBottom="13dp"
+                    android:paddingLeft="13dp"
+                    android:paddingRight="3dp"
+                    android:paddingTop="13dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/headIV"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:onClick="@{myselfFragment.onHeadClick}"
+                        android:src="@{ApiByHttp.instance.user.member_avatar}"
+                        omi:error="@{@drawable/default_head}"
+                        omi:leftBottomRadius="@{@dimen/dimen_3}"
+                        omi:leftTopRadius="@{@dimen/dimen_3}"
+                        omi:placeholder="@{@drawable/default_head}"
+                        omi:rightBottomRadius="@{@dimen/dimen_3}"
+                        omi:rightTopRadius="@{@dimen/dimen_3}"/>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{ApiByHttp.instance.user.member_nickname}"
+                            android:textColor="@color/text_color"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:text="@{@string/account+ApiByHttp.instance.user.member_name}"
+                            android:textColor="@color/text_less_color"
+                            android:textSize="14sp"/>
+                    </FrameLayout>
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:onClick="@{myselfFragment.onQrClick}"
+                        android:padding="10dp"
+                        android:src="@mipmap/qr_icon"/>
+                </LinearLayout>
+
+                <View style="@style/lineStyle"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:onClick="@{myselfFragment.onDynamicClick}"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:src="@mipmap/my_dynamic"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:layout_weight="1"
+                            android:text="@string/my_dynamic"
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="10dp"
+                            android:layout_marginRight="@dimen/side_margin"
+                            android:adjustViewBounds="true"
+                            android:src="@mipmap/arrow_right"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:layout_marginTop="0.5dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:onClick="@{myselfFragment.onCollectClick}"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:src="@mipmap/collect"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:layout_weight="1"
+                            android:text="@string/collect"
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="10dp"
+                            android:layout_marginRight="@dimen/side_margin"
+                            android:adjustViewBounds="true"
+                            android:src="@mipmap/arrow_right"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View style="@style/lineStyle"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:onClick="@{myselfFragment.onFlowRechargeClick}"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:src="@mipmap/flow_recharge"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:layout_weight="1"
+                            android:text="@string/flow_recharge"
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="10dp"
+                            android:layout_marginRight="@dimen/side_margin"
+                            android:adjustViewBounds="true"
+                            android:src="@mipmap/arrow_right"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:onClick="@{myselfFragment.onPhoneRechargeClick}"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:src="@mipmap/phone_recharge"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:layout_weight="1"
+                            android:text="@string/phone_recharge"
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="10dp"
+                            android:layout_marginRight="@dimen/side_margin"
+                            android:adjustViewBounds="true"
+                            android:src="@mipmap/arrow_right"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:layout_marginTop="0.5dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:onClick="@{myselfFragment.onBankCardClick}"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:src="@mipmap/my_bank_card"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:layout_weight="1"
+                            android:text="@string/my_bank_card"
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="10dp"
+                            android:layout_marginRight="@dimen/side_margin"
+                            android:adjustViewBounds="true"
+                            android:src="@mipmap/arrow_right"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View style="@style/lineStyle"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_marginLeft="@dimen/side_margin"
+                        android:src="@mipmap/simple_app"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/side_margin"
+                        android:text="@string/my_bank_card"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:onClick="@{myselfFragment.onTaoBaoClick}"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:src="@mipmap/appicon_taobao"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:text="@string/myself_taobao"
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:layout_marginTop="0.5dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:onClick="@{myselfFragment.onWeiPinHuiClick}"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:src="@mipmap/appicon_weipinhui"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:text="@string/myself_weipinhui"
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:layout_marginTop="0.5dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:onClick="@{myselfFragment.onJingDongClick}"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:src="@mipmap/appicon_jingdong"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:text="@string/myself_jingdong"
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:layout_marginTop="0.5dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:onClick="@{myselfFragment.onJuMeiClick}"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:src="@mipmap/appicon_jumei"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:text="@string/myself_jumei"
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:layout_marginTop="0.5dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:onClick="@{myselfFragment.onMoreClick}"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:src="@mipmap/myself_more"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/side_margin"
+                            android:text="@string/myself_more"
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

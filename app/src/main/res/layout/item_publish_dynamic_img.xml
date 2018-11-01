@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="uri"
+            type="android.net.Uri"/>
+
+        <variable
+            name="dynamicImageAdapter"
+            type="com.omi.ui.adapter.dynamic.DynamicImageAdapter"/>
+
+        <variable
+            name="position"
+            type="Integer"/>
+    </data>
+
+    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+               android:layout_width="67dp"
+               android:layout_height="67dp"
+               android:layout_marginRight="10dp"
+               android:onClick="@{()->dynamicImageAdapter.onImageClick(position)}"
+               android:scaleType="centerCrop"
+               android:src="@{uri}"/>
+</layout>

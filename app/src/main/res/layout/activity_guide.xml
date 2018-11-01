@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onPageChangeListener"
+            type="android.support.v4.view.ViewPager.OnPageChangeListener"/>
+
+        <variable
+            name="adapter"
+            type="android.support.v4.view.PagerAdapter"/>
+
+        <variable
+            name="guideActivity"
+            type="com.omi.ui.activity.GuideActivity"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_color">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            omi:adapter="@{adapter}"
+            omi:onPageChangeListener="@{onPageChangeListener}"/>
+
+        <View
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="60dp"
+            android:onClick="@{(view)->guideActivity.goLogin(view)}"/>
+    </FrameLayout>
+</layout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String"/>
+
+        <variable
+            name="postion"
+            type="Integer"/>
+
+        <variable
+            name="dynamicImagesAdapter"
+            type="com.omi.ui.adapter.dynamic.DynamicImagesAdapter"/>
+    </data>
+
+    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+               android:layout_width="88dp"
+               android:layout_height="88dp"
+               android:layout_marginBottom="10dp"
+               android:layout_marginRight="10dp"
+               android:onClick="@{(view)->dynamicImagesAdapter.onImageClick(view,postion)}"
+               android:scaleType="centerCrop"
+               android:src="@{url}"
+               omi:error="@{@drawable/default_image}"
+               omi:placeholder="@{@drawable/default_image}"/>
+</layout>

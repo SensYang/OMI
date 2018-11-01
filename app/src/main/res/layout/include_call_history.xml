@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="phoneFragment"
+            type="com.omi.ui.activity.main.PhoneFragment"/>
+
+        <variable
+            name="adapter"
+            type="android.support.v7.widget.RecyclerView.Adapter"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="@{phoneFragment.showHistory?View.VISIBLE:View.GONE}">
+
+        <com.omi.ui.widget.TopNavigationBar
+            style="@style/TopBarStyle"
+            omi:centerText="@string/call_history"
+            omi:leftVisible="false"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            omi:adapter="@{adapter}"
+            omi:layoutManager="LinearLayoutManager"/>
+    </LinearLayout>
+</layout>

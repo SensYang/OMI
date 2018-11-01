@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="headList"
+            type="java.util.List&lt;String>"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="53dp"
+        android:layout_height="53dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_box_group_head_dark3"
+            android:visibility="@{headList[8]==null?View.VISIBLE:View.GONE}"/>
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:src="@{headList[0]}"
+            omi:leftBottomRadius="@{@dimen/dimen_1}"
+            omi:leftTopRadius="@{@dimen/dimen_3}"
+            omi:rightBottomRadius="@{@dimen/dimen_1}"
+            omi:rightTopRadius="@{@dimen/dimen_1}"/>
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_centerHorizontal="true"
+            android:src="@{headList[1]}"
+            omi:leftBottomRadius="@{@dimen/dimen_1}"
+            omi:leftTopRadius="@{@dimen/dimen_1}"
+            omi:rightBottomRadius="@{@dimen/dimen_1}"
+            omi:rightTopRadius="@{@dimen/dimen_1}"/>
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_alignParentRight="true"
+            android:src="@{headList[2]}"
+            omi:leftBottomRadius="@{@dimen/dimen_1}"
+            omi:leftTopRadius="@{@dimen/dimen_1}"
+            omi:rightBottomRadius="@{@dimen/dimen_1}"
+            omi:rightTopRadius="@{@dimen/dimen_3}"/>
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_centerVertical="true"
+            android:src="@{headList[3]}"
+            android:visibility="@{headList[3]==null?View.GONE:View.VISIBLE}"
+            omi:leftBottomRadius="@{@dimen/dimen_1}"
+            omi:leftTopRadius="@{@dimen/dimen_1}"
+            omi:rightBottomRadius="@{@dimen/dimen_1}"
+            omi:rightTopRadius="@{@dimen/dimen_1}"/>
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_centerInParent="true"
+            android:src="@{headList[4]}"
+            android:visibility="@{headList[4]==null?View.GONE:View.VISIBLE}"
+            omi:leftBottomRadius="@{@dimen/dimen_1}"
+            omi:leftTopRadius="@{@dimen/dimen_1}"
+            omi:rightBottomRadius="@{@dimen/dimen_1}"
+            omi:rightTopRadius="@{@dimen/dimen_1}"/>
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@{headList[5]}"
+            android:visibility="@{headList[5]==null?View.GONE:View.VISIBLE}"
+            omi:leftBottomRadius="@{@dimen/dimen_1}"
+            omi:leftTopRadius="@{@dimen/dimen_1}"
+            omi:rightBottomRadius="@{@dimen/dimen_1}"
+            omi:rightTopRadius="@{@dimen/dimen_1}"/>
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_alignParentBottom="true"
+            android:src="@{headList[6]}"
+            android:visibility="@{headList[6]==null?View.GONE:View.VISIBLE}"
+            omi:leftBottomRadius="@{@dimen/dimen_3}"
+            omi:leftTopRadius="@{@dimen/dimen_1}"
+            omi:rightBottomRadius="@{@dimen/dimen_1}"
+            omi:rightTopRadius="@{@dimen/dimen_1}"/>
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@{headList[7]}"
+            android:visibility="@{headList[7]==null?View.GONE:View.VISIBLE}"
+            omi:leftBottomRadius="@{@dimen/dimen_1}"
+            omi:leftTopRadius="@{@dimen/dimen_1}"
+            omi:rightBottomRadius="@{@dimen/dimen_1}"
+            omi:rightTopRadius="@{@dimen/dimen_1}"/>
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@{headList[8]}"
+            android:visibility="@{headList[8]==null?View.GONE:View.VISIBLE}"
+            omi:leftBottomRadius="@{@dimen/dimen_1}"
+            omi:leftTopRadius="@{@dimen/dimen_1}"
+            omi:rightBottomRadius="@{@dimen/dimen_3}"
+            omi:rightTopRadius="@{@dimen/dimen_1}"/>
+
+    </RelativeLayout>
+
+</layout>

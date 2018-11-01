@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="phoneFragment"
+            type="com.omi.ui.activity.main.PhoneFragment"/>
+
+        <variable
+            name="adapter"
+            type="android.support.v7.widget.RecyclerView.Adapter"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            layout="@layout/include_phone"
+            omi:phoneFragment="@{phoneFragment}"/>
+
+        <include
+            layout="@layout/include_call_history"
+            omi:adapter="@{adapter}"
+            omi:phoneFragment="@{phoneFragment}"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right|bottom"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="30dp"
+            android:onClick="@{()->phoneFragment.setShowHistory(!phoneFragment.showHistory)}"
+            android:src="@{phoneFragment.showHistory?@drawable/call_normal:@drawable/call_history}"/>
+    </FrameLayout>
+</layout>

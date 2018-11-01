@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="message"
+            type="com.omi.bean.chat.IMMessage"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/include_chat_time"
+            omi:message="@{message}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <include
+                layout="@layout/include_chat_head"
+                omi:head="@{message.fromHead}"
+                omi:userid="@{message.from}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:background="@drawable/chat_box_other"
+                android:maxWidth="176dp"
+                android:minHeight="39dp"
+                android:paddingBottom="7.6dp"
+                android:paddingLeft="14dp"
+                android:paddingRight="6dp"
+                android:paddingTop="7.6dp"
+                android:text="@{message.content}"
+                android:textColor="@color/text_color"
+                android:textSize="16sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

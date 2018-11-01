@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="dynamicAdapter"
+            type="com.omi.ui.adapter.dynamic.DynamicAdapter"/>
+
+        <variable
+            name="commentAdapter"
+            type="android.support.v7.widget.RecyclerView.Adapter"/>
+
+        <variable
+            name="dynamic"
+            type="com.omi.bean.dynamic.Dynamic.Data"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="@dimen/side_margin"
+        android:layout_marginTop="19dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="17dp"
+                android:adjustViewBounds="true"
+                android:onClick="@{(view)->dynamicAdapter.onShareClick(view,dynamic)}"
+                android:src="@mipmap/dynamic_share"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:onClick="@{(view)->dynamicAdapter.onShareClick(view,dynamic)}"
+                android:paddingLeft="11dp"
+                android:text="@string/dynamic_share"
+                android:textColor="@color/text_less_color"
+                android:textSize="10sp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="17dp"
+                android:layout_marginLeft="33dp"
+                android:adjustViewBounds="true"
+                android:onClick="@{()->dynamicAdapter.onCommentClick(dynamic)}"
+                android:src="@mipmap/dynamic_comment"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:onClick="@{()->dynamicAdapter.onCommentClick(dynamic)}"
+                android:paddingLeft="11dp"
+                android:text="@string/dynamic_comment"
+                android:textColor="@color/text_less_color"
+                android:textSize="10sp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="17dp"
+                android:layout_marginLeft="33dp"
+                android:adjustViewBounds="true"
+                android:onClick="@{()->dynamicAdapter.onPraiseClick(dynamic)}"
+                android:src="@{dynamic.hasPraise ? @drawable/dynamic_praiseed : @drawable/dynamic_praise}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:onClick="@{()->dynamicAdapter.onPraiseClick(dynamic)}"
+                android:paddingLeft="11dp"
+                android:text="@string/dynamic_praise"
+                android:textColor="@color/text_less_color"
+                android:textSize="10sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/side_margin"
+            android:layout_marginTop="10dp"
+            android:background="@color/background"
+            android:orientation="vertical"
+            android:visibility="@{dynamic.zanNames==null?(dynamic.pinglun==null?View.GONE:View.VISIBLE):View.VISIBLE}">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{dynamic.zanNames}"
+                android:textColor="@color/main_color"
+                android:textSize="14sp"
+                android:visibility="@{dynamic.zanNames==null?View.GONE:View.VISIBLE}"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{dynamic.pinglun==null?View.GONE:View.VISIBLE}"
+                omi:adapter="@{commentAdapter}"
+                omi:layoutManager="LinearLayoutManager"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

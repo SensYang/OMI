@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.omi.utils.controller.ChatItemControl"/>
+
+        <variable
+            name="message"
+            type="com.omi.bean.chat.IMMessage"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/include_chat_time"
+            omi:message="@{message}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <include
+                layout="@layout/include_chat_head"
+                omi:head="@{message.fromHead}"
+                omi:userid="@{message.from}"/>
+
+            <FrameLayout
+                android:layout_width="137dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:onClick="@{(view)->ChatItemControl.instance.onVideoClick(view,message)}">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@{message.thumbnailUrl}"/>
+
+                <ProgressBar
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:indeterminateOnly="false"
+                    android:max="100"
+                    android:progress="@{message.progress}"
+                    android:progressDrawable="@drawable/progress_back"
+                    android:secondaryProgress="@{message.progress}"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:paddingLeft="45dp"
+                    android:paddingRight="45dp"
+                    android:src="@mipmap/chat_play"/>
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

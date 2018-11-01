@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="requestFriendActivity"
+            type="com.omi.ui.activity.user.RequestFriendActivity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.omi.ui.widget.TopNavigationBar
+            style="@style/TopBarStyle"
+            omi:centerText="@string/suth_reason"
+            omi:leftClick="@{@string/top_left_click}"
+            omi:rightClick="@{@string/top_right_click}"
+            omi:rightText="@string/send" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/request_hint"
+                android:textColor="@color/text_less_color"
+                android:textSize="14sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/reasonET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_background"
+                    android:paddingBottom="2dp"
+                    android:paddingTop="18dp"
+                    android:text="@={requestFriendActivity.reason}"
+                    android:textColor="@color/text_color"
+                    android:textSize="14sp"
+                    omi:onFocusChangeListener="@{requestFriendActivity.focusChangeListener}"
+                    omi:tag="@{clearReason}" />
+
+                <TextView
+                    android:id="@+id/clearReason"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom"
+                    android:onClick="@{(view)->requestFriendActivity.clear(view)}"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="×"
+                    android:textColor="@color/text_less_color"
+                    android:textSize="20sp"
+                    omi:tag="@{reasonET}" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/remark_hint"
+                android:textColor="@color/text_less_color"
+                android:textSize="14sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/remarkET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_background"
+                    android:paddingBottom="2dp"
+                    android:paddingTop="18dp"
+                    android:text="@={requestFriendActivity.remark}"
+                    android:textColor="@color/text_color"
+                    android:textSize="14sp"
+                    omi:onFocusChangeListener="@{requestFriendActivity.focusChangeListener}"
+                    omi:tag="@{clearRemark}" />
+
+                <TextView
+                    android:id="@+id/clearRemark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom"
+                    android:onClick="@{(view)->requestFriendActivity.clear(view)}"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="×"
+                    android:textColor="@color/text_less_color"
+                    android:textSize="20sp"
+                    omi:tag="@{remarkET}" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{requestFriendActivity.name==null?View.GONE:View.VISIBLE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text='@{@string/user_on_contact+requestFriendActivity.name+"”"}'
+                    android:textColor="@color/text_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:onClick="@{(view)->requestFriendActivity.fillName(view)}"
+                    android:text="@string/fill"
+                    android:textColor="@color/main_color"
+                    omi:tag="@{remarkET}" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/friend_circle_power_hint"
+                android:textColor="@color/text_less_color"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/didnt_give_power"
+                    android:textColor="@color/text_color"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:onClick="@{(view)->requestFriendActivity.powerChange(view)}"
+                    android:src="@{requestFriendActivity.givePower?@drawable/selected:@drawable/select}" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

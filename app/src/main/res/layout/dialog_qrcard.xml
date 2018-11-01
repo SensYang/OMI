@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="bitmap"
+            type="android.graphics.Bitmap"/>
+
+        <variable
+            name="user"
+            type="com.omi.bean.User.Data"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@{user.member_avatar}"
+                omi:error="@{@drawable/default_head}"
+                omi:leftBottomRadius="@{@dimen/dimen_3}"
+                omi:leftTopRadius="@{@dimen/dimen_3}"
+                omi:placeholder="@{@drawable/default_head}"
+                omi:rightBottomRadius="@{@dimen/dimen_3}"
+                omi:rightTopRadius="@{@dimen/dimen_3}"/>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="13dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@{user.member_nickname}"
+                    android:textColor="@color/text_color"
+                    android:textSize="16sp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@{user.boy?@drawable/shape_box_main_3:@drawable/shape_box_girl_3}"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="7dp"
+                        android:adjustViewBounds="true"
+                        android:src="@{user.boy?@drawable/icon_boy:@drawable/icon_girl}"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:maxLines="1"
+                        android:text="@{user.member_age}"
+                        android:textColor="@color/white"
+                        android:textSize="9dp"/>
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:maxLines="1"
+                    android:text="@{@string/remark+user.member_remark}"
+                    android:textColor="@color/text_less_color"
+                    android:textSize="14sp"/>
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="30dp"
+            android:src="@{bitmap}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="33dp"
+            android:maxLines="1"
+            android:text="@string/qr_scan_hint"
+            android:textColor="@color/text_less_color"/>
+    </LinearLayout>
+</layout>

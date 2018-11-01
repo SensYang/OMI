@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="adapter"
+            type="android.support.v4.view.PagerAdapter"/>
+
+        <variable
+            name="loginActivity"
+            type="com.omi.ui.activity.account.LoginActivity"/>
+
+        <import type="android.view.View"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/main_color"
+            android:orientation="vertical">
+
+            <com.omi.ui.widget.TopNavigationBar
+                style="@style/TopBarStyle"
+                omi:leftVisible="false"/>
+
+            <ImageView
+                android:layout_width="89dp"
+                android:layout_height="89dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/icon_omi"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{()->loginActivity.setCurrentItem(0)}"
+                    android:padding="3dp"
+                    android:text="@string/login"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"/>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{()->loginActivity.setCurrentItem(1)}"
+                    android:padding="3dp"
+                    android:text="@string/registe"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:alpha="@{loginActivity.currentItem==0?1f:0f}"
+                    android:onClick="@{()->loginActivity.setCurrentItem(0)}"
+                    android:paddingTop="12dp"
+                    android:src="@mipmap/point"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:alpha="@{loginActivity.currentItem==1?1f:0f}"
+                    android:onClick="@{()->loginActivity.setCurrentItem(1)}"
+                    android:paddingTop="12dp"
+                    android:src="@mipmap/point"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            omi:adapter="@{adapter}"
+            omi:currentItem="@{loginActivity.currentItem}"
+            omi:onPageChangeListener="@{loginActivity}"/>
+    </LinearLayout>
+</layout>

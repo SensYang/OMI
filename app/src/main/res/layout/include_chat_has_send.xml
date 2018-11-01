@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="message"
+            type="com.omi.bean.chat.IMMessage"/>
+    </data>
+
+    <TextView
+        android:layout_width="17.5dp"
+        android:layout_height="17.5dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/shape_oval_message_red"
+        android:gravity="center"
+        android:text="!"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:visibility="gone" />
+</layout>

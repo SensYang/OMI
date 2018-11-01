@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="emoji"
+            type="com.omi.bean.chat.Emoji" />
+
+        <variable
+            name="faceAdapter"
+            type="com.omi.ui.widget.chatbroad.FaceAdapter" />
+
+        <variable
+            name="chatControlView"
+            type="com.omi.ui.widget.ChatControlView" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{()->chatControlView.onEmojiClick(emoji)}">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center"
+            android:layout_margin="6dp"
+            android:adjustViewBounds="true"
+            android:src="@{emoji.imgRes}" />
+    </FrameLayout>
+
+</layout>

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="rechargePhoneActivity"
+            type="com.omi.ui.activity.recharge.RechargePhoneActivity"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+        <com.omi.ui.widget.TopNavigationBar
+            style="@style/TopBarStyle"
+            omi:centerText="@string/phone_recharge"
+            omi:leftClick="@{@string/top_left_click}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp"
+            android:paddingRight="3dp">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:inputType="phone"
+                android:text="@={rechargePhoneActivity.phoneNum}"
+                android:textColor="@color/text_color"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:onClick="@{(view)->rechargePhoneActivity.selectContact(view)}"
+                android:padding="10dp"
+                android:src="@mipmap/icon_select_contact"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="自定义充值额度"
+                android:textColor="@color/text_color"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="13dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="148dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_box_trans_line_3_1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:paddingLeft="20dp"
+                        android:text="@={rechargePhoneActivity.inputMoney}"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="元"
+                        android:textColor="@color/main_color"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/shape_box_trans_line_3_1"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@{rechargePhoneActivity.inputMinute}"
+                    android:textColor="@color/text_color"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="欧咪话费充值，每分钟0.08元"
+                android:textColor="@color/text_less_color"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="选择充值额度"
+                android:textColor="@color/text_color"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->rechargePhoneActivity.setSelectAt(0)}">
+
+                    <TextView
+                        android:layout_width="57dp"
+                        android:layout_height="57dp"
+                        android:layout_gravity="center"
+                        android:background="@{rechargePhoneActivity.selectAt==0?@drawable/shape_box_main_3:@drawable/shape_box_trans_main_3_1}"
+                        android:gravity="center"
+                        android:text="10元"
+                        android:textColor="@{rechargePhoneActivity.selectAt==0?@color/white:@color/main_color}"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->rechargePhoneActivity.setSelectAt(1)}">
+
+                    <TextView
+                        android:layout_width="57dp"
+                        android:layout_height="57dp"
+                        android:layout_gravity="center"
+                        android:background="@{rechargePhoneActivity.selectAt==1?@drawable/shape_box_main_3:@drawable/shape_box_trans_main_3_1}"
+                        android:gravity="center"
+                        android:text="20元"
+                        android:textColor="@{rechargePhoneActivity.selectAt==1?@color/white:@color/main_color}"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->rechargePhoneActivity.setSelectAt(2)}">
+
+                    <TextView
+                        android:layout_width="57dp"
+                        android:layout_height="57dp"
+                        android:layout_gravity="center"
+                        android:background="@{rechargePhoneActivity.selectAt==2?@drawable/shape_box_main_3:@drawable/shape_box_trans_main_3_1}"
+                        android:gravity="center"
+                        android:text="30元"
+                        android:textColor="@{rechargePhoneActivity.selectAt==2?@color/white:@color/main_color}"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->rechargePhoneActivity.setSelectAt(3)}">
+
+                    <TextView
+                        android:layout_width="57dp"
+                        android:layout_height="57dp"
+                        android:layout_gravity="center"
+                        android:background="@{rechargePhoneActivity.selectAt==3?@drawable/shape_box_main_3:@drawable/shape_box_trans_main_3_1}"
+                        android:gravity="center"
+                        android:text="50元"
+                        android:textColor="@{rechargePhoneActivity.selectAt==3?@color/white:@color/main_color}"/>
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->rechargePhoneActivity.setSelectAt(4)}">
+
+                    <TextView
+                        android:layout_width="57dp"
+                        android:layout_height="57dp"
+                        android:layout_gravity="center"
+                        android:background="@{rechargePhoneActivity.selectAt==4?@drawable/shape_box_main_3:@drawable/shape_box_trans_main_3_1}"
+                        android:gravity="center"
+                        android:text="100元"
+                        android:textColor="@{rechargePhoneActivity.selectAt==4?@color/white:@color/main_color}"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->rechargePhoneActivity.setSelectAt(5)}">
+
+                    <TextView
+                        android:layout_width="57dp"
+                        android:layout_height="57dp"
+                        android:layout_gravity="center"
+                        android:background="@{rechargePhoneActivity.selectAt==5?@drawable/shape_box_main_3:@drawable/shape_box_trans_main_3_1}"
+                        android:gravity="center"
+                        android:text="200元"
+                        android:textColor="@{rechargePhoneActivity.selectAt==5?@color/white:@color/main_color}"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->rechargePhoneActivity.setSelectAt(6)}">
+
+                    <TextView
+                        android:layout_width="57dp"
+                        android:layout_height="57dp"
+                        android:layout_gravity="center"
+                        android:background="@{rechargePhoneActivity.selectAt==6?@drawable/shape_box_main_3:@drawable/shape_box_trans_main_3_1}"
+                        android:gravity="center"
+                        android:text="300元"
+                        android:textColor="@{rechargePhoneActivity.selectAt==6?@color/white:@color/main_color}"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->rechargePhoneActivity.setSelectAt(7)}">
+
+                    <TextView
+                        android:layout_width="57dp"
+                        android:layout_height="57dp"
+                        android:layout_gravity="center"
+                        android:background="@{rechargePhoneActivity.selectAt==7?@drawable/shape_box_main_3:@drawable/shape_box_trans_main_3_1}"
+                        android:gravity="center"
+                        android:text="500元"
+                        android:textColor="@{rechargePhoneActivity.selectAt==7?@color/white:@color/main_color}"/>
+                </FrameLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/shape_box_main_5"
+                android:gravity="center"
+                android:onClick="@{(view)->rechargePhoneActivity.rechargeClick(view)}"
+                android:text="充值"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

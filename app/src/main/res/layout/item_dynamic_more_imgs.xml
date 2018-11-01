@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <import type="android.view.Gravity"/>
+
+        <variable
+            name="dynamicAdapter"
+            type="com.omi.ui.adapter.dynamic.DynamicAdapter"/>
+
+        <variable
+            name="dynamic"
+            type="com.omi.bean.dynamic.Dynamic.Data"/>
+
+        <variable
+            name="adapter"
+            type="android.support.v7.widget.RecyclerView.Adapter"/>
+
+        <variable
+            name="overLineTextView"
+            type="com.omi.ui.widget.OverLineTextView"/>
+
+        <variable
+            name="commentAdapter"
+            type="com.omi.ui.adapter.dynamic.DynamicCommentAdapter"/>
+    </data>
+
+    <com.omi.ui.widget.LongClickLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        omi:onLongClickListener="@{dynamicAdapter.onLongClickListener}"
+        omi:tag="@{dynamic}">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="6dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/include_dynamic_top"
+                omi:dynamic="@{dynamic}"
+                omi:dynamicAdapter="@{dynamicAdapter}"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="3dp"
+                omi:adapter="@{adapter}"
+                omi:layoutManager="GridLayoutManager"
+                omi:spanCount="3"/>
+
+            <com.omi.ui.widget.OverLineTextView
+                android:id="@+id/contentTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="@dimen/side_margin"
+                android:layout_marginTop="9dp"
+                android:ellipsize="end"
+                android:gravity="@{dynamic.showAll?Gravity.TOP|Gravity.START:Gravity.CENTER}"
+                android:maxLines="@{dynamic.showAll?Integer.MAX_VALUE:1}"
+                android:onClick="@{()->dynamicAdapter.onTextClick(dynamic)}"
+                android:text="@{dynamic.release_textInfo}"
+                android:textColor="@color/text_color"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="@dimen/side_margin"
+                android:layout_marginTop="4dp"
+                android:onClick="@{()->dynamicAdapter.onShowAllClick(dynamic)}"
+                android:paddingLeft="10dp"
+                android:text="@{dynamic.showAll?@string/show_little:@string/show_all}"
+                android:textColor="@color/main_color"
+                android:textSize="12sp"
+                android:visibility="@{overLineTextView.overSize?View.VISIBLE:View.GONE}"/>
+
+            <include
+                layout="@layout/include_dynamic_bottom"
+                omi:commentAdapter="@{commentAdapter}"
+                omi:dynamic="@{dynamic}"
+                omi:dynamicAdapter="@{dynamicAdapter}"/>
+
+        </LinearLayout>
+    </com.omi.ui.widget.LongClickLinearLayout>
+</layout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="layoutManager"
+            type="android.support.v7.widget.RecyclerView.LayoutManager"/>
+
+        <variable
+            name="adapter"
+            type="android.support.v7.widget.RecyclerView.Adapter"/>
+
+        <variable
+            name="searchActivity"
+            type="com.omi.ui.activity.search.SearchActivity"/>
+    </data>
+
+    <merge>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.omi.ui.widget.TopNavigationBar
+                    style="@style/TopBarStyle"
+                    omi:leftVisible="false"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/topbar_height"
+                    android:layout_gravity="bottom"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:adjustViewBounds="true"
+                        android:onClick="@{searchActivity.onFinishClick}"
+                        android:paddingRight="3.5dp"
+                        android:src="@mipmap/back_btn"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginRight="13dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/shape_box_white_50"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="17dp"
+                            android:layout_marginLeft="13dp"
+                            android:adjustViewBounds="true"
+                            android:src="@mipmap/contacts_search"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@null"
+                            android:gravity="center_vertical"
+                            android:hint="@string/search"
+                            android:imeOptions="actionSearch"
+                            android:singleLine="true"
+                            android:text="@={searchActivity.searchKey}"
+                            android:textColor="@color/text_color"
+                            android:textColorHint="@color/search_color"
+                            android:textSize="13sp"
+                            omi:onKeyListener="@{searchActivity.listener}"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                omi:adapter="@{adapter}"
+                omi:layoutManager="@{layoutManager}"/>
+
+        </LinearLayout>
+    </merge>
+</layout>

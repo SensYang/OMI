@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="accountElement"
+            type="com.omi.bean.account.AccountElement" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@{accountElement.hint}"
+                android:inputType="@{accountElement.inputType}"
+                android:paddingBottom="17dp"
+                android:paddingTop="17dp"
+                android:text="@={accountElement.element}"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_less_color"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="@{accountElement.clickAble}"
+                android:gravity="center_vertical"
+                android:onClick="@{()->accountElement.onClick()}"
+                android:paddingLeft="15dp"
+                android:text="@{accountElement.action}"
+                android:textColor="@color/text_color"
+                android:textSize="14sp"
+                android:visibility="@{accountElement.action==null?View.GONE:View.VISIBLE}" />
+        </LinearLayout>
+
+        <View style="@style/lineStyle" />
+    </LinearLayout>
+</layout>

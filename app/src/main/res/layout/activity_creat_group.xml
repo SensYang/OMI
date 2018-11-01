@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="adapter"
+            type="android.support.v7.widget.RecyclerView.Adapter"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.omi.ui.widget.TopNavigationBar
+            style="@style/TopBarStyle"
+            omi:centerText="@string/start_group_chat"
+            omi:leftClick="@{@string/top_left_click}"
+            omi:rightClick="@{@string/top_right_click}"
+            omi:rightText="@string/confirm"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                omi:adapter="@{adapter}"
+                omi:layoutManager="LinearLayoutManager"/>
+
+            <com.omi.ui.widget.indexlist.QuickIndexBar
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:clickable="true"
+                omi:floatingView="@{floatingView}"
+                omi:recyclerView="@{recyclerView}"
+                omi:selectTextColor="@color/main_color"
+                omi:textColor="@color/text_color"
+                omi:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/floatingView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/shape_box_index"
+                android:gravity="center"
+                android:paddingTop="-5dp"
+                android:textColor="@android:color/white"
+                android:textSize="60sp"
+                android:visibility="invisible"/>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

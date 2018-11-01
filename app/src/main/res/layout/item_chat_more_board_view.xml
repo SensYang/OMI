@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:omi="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="java.util.List" />
+
+        <import type="com.omi.bean.chat.ChatMoreBoard" />
+
+        <variable
+            name="chatMoreBroadView"
+            type="com.omi.ui.widget.ChatMoreBroadView" />
+
+        <variable
+            name="list"
+            type="List&lt;ChatMoreBoard>" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <include
+                layout="@layout/include_more_board_view"
+                omi:chatMoreBoard="@{list[0]}"
+                omi:chatMoreBroadView="@{chatMoreBroadView}" />
+
+            <include
+                layout="@layout/include_more_board_view"
+                omi:chatMoreBoard="@{list[1]}"
+                omi:chatMoreBroadView="@{chatMoreBroadView}" />
+
+            <include
+                layout="@layout/include_more_board_view"
+                omi:chatMoreBoard="@{list[2]}"
+                omi:chatMoreBroadView="@{chatMoreBroadView}" />
+
+            <include
+                layout="@layout/include_more_board_view"
+                omi:chatMoreBoard="@{list[3]}"
+                omi:chatMoreBroadView="@{chatMoreBroadView}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <include
+                layout="@layout/include_more_board_view"
+                omi:chatMoreBoard="@{list[4]}"
+                omi:chatMoreBroadView="@{chatMoreBroadView}" />
+
+            <include
+                layout="@layout/include_more_board_view"
+                omi:chatMoreBoard="@{list[5]}"
+                omi:chatMoreBroadView="@{chatMoreBroadView}" />
+
+            <include
+                layout="@layout/include_more_board_view"
+                omi:chatMoreBoard="@{list[6]}"
+                omi:chatMoreBroadView="@{chatMoreBroadView}" />
+
+            <include
+                layout="@layout/include_more_board_view"
+                omi:chatMoreBoard="@{list[7]}"
+                omi:chatMoreBroadView="@{chatMoreBroadView}" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

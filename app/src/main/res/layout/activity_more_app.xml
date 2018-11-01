@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="moreAppActivity"
+            type="com.omi.ui.activity.otherApp.MoreAppActivity"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:omi="http://schemas.android.com/apk/res-auto"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="@color/white"
+                  android:orientation="vertical">
+
+        <com.omi.ui.widget.TopNavigationBar
+            style="@style/TopBarStyle"
+            omi:centerText="@string/small_app"
+            omi:leftClick="@{@string/top_left_click}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@{moreAppActivity.pointAt==0?@color/dark_background:@color/white}"
+                    android:gravity="center"
+                    android:onClick="@{(view)->moreAppActivity.onTypeClick(view)}"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp"
+                    android:text="@string/type0"
+                    android:textColor="@color/text_less_color"
+                    android:textSize="16sp"
+                    omi:tag="@{type0}"/>
+
+                <View
+                    style="@style/lineStyle"
+                    android:background="@color/less_line_color"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@{moreAppActivity.pointAt==1?@color/dark_background:@color/white}"
+                    android:gravity="center"
+                    android:onClick="@{(view)->moreAppActivity.onTypeClick(view)}"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp"
+                    android:text="@string/type1"
+                    android:textColor="@color/text_less_color"
+                    android:textSize="16sp"
+                    omi:tag="@{type1}"/>
+
+                <View
+                    style="@style/lineStyle"
+                    android:background="@color/less_line_color"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@{moreAppActivity.pointAt==2?@color/dark_background:@color/white}"
+                    android:gravity="center"
+                    android:onClick="@{(view)->moreAppActivity.onTypeClick(view)}"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp"
+                    android:text="@string/type2"
+                    android:textColor="@color/text_less_color"
+                    android:textSize="16sp"
+                    omi:tag="@{type2}"/>
+
+                <View
+                    style="@style/lineStyle"
+                    android:background="@color/less_line_color"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@{moreAppActivity.pointAt==3?@color/dark_background:@color/white}"
+                    android:gravity="center"
+                    android:onClick="@{(view)->moreAppActivity.onTypeClick(view)}"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp"
+                    android:text="@string/type3"
+                    android:textColor="@color/text_less_color"
+                    android:textSize="16sp"
+                    omi:tag="@{type3}"/>
+
+                <View
+                    style="@style/lineStyle"
+                    android:background="@color/less_line_color"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@{moreAppActivity.pointAt==4?@color/dark_background:@color/white}"
+                    android:gravity="center"
+                    android:onClick="@{(view)->moreAppActivity.onTypeClick(view)}"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp"
+                    android:text="@string/type4"
+                    android:textColor="@color/text_less_color"
+                    android:textSize="16sp"
+                    omi:tag="@{type4}"/>
+
+                <View
+                    style="@style/lineStyle"
+                    android:background="@color/less_line_color"/>
+            </LinearLayout>
+
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/type0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/background"
+                        android:paddingLeft="13dp"
+                        android:text="@string/type0"
+                        android:textColor="@color/text_less_color"
+                        android:textSize="12sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingLeft="13dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_jingdong">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_jingdong"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_jingdong"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+
+                        <View
+                            style="@style/lineStyle"
+                            android:background="@color/less_line_color"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_jumei">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_jumei"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_jumei"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+
+                        <View
+                            style="@style/lineStyle"
+                            android:background="@color/less_line_color"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_taobao">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_taobao"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_taobao"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+
+                        <View
+                            style="@style/lineStyle"
+                            android:background="@color/less_line_color"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_weipinhui">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_weipinhui"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_weipinhui"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+
+                        <View
+                            style="@style/lineStyle"
+                            android:background="@color/less_line_color"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_yihaodian">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_yihaodian"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_yihaodian"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/type1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/background"
+                        android:paddingLeft="13dp"
+                        android:text="@string/type1"
+                        android:textColor="@color/text_less_color"
+                        android:textSize="12sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingLeft="13dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_douyu">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_douyu"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_douyu"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+
+                        <View
+                            style="@style/lineStyle"
+                            android:background="@color/less_line_color"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_xiongmaotv">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_xiongmaotv"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_xiongmaotv"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+
+                        <View
+                            style="@style/lineStyle"
+                            android:background="@color/less_line_color"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_yy">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_yy"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_yy"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/type2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/background"
+                        android:paddingLeft="13dp"
+                        android:text="@string/type2"
+                        android:textColor="@color/text_less_color"
+                        android:textSize="12sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingLeft="13dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_eleme">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_eleme"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_eleme"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+
+                        <View
+                            style="@style/lineStyle"
+                            android:background="@color/less_line_color"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_meituan">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_meituan"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_meituan"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/type3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/background"
+                        android:paddingLeft="13dp"
+                        android:text="@string/type3"
+                        android:textColor="@color/text_less_color"
+                        android:textSize="12sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingLeft="13dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_kugouynyue">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_kugouynyue"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_kugouynyue"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+
+                        <View
+                            style="@style/lineStyle"
+                            android:background="@color/less_line_color"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_qqyinyue">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_qqyinyue"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_qqyinyue"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+
+                        <View
+                            style="@style/lineStyle"
+                            android:background="@color/less_line_color"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_wangyiyun">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_wangyiyun"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_wangyiyun"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+
+                        <View
+                            style="@style/lineStyle"
+                            android:background="@color/less_line_color"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_xiami">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_xiami"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_xiami"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/type4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/background"
+                        android:paddingLeft="13dp"
+                        android:text="@string/type4"
+                        android:textColor="@color/text_less_color"
+                        android:textSize="12sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingLeft="13dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_12306">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_12306"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_12306"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+
+                        <View
+                            style="@style/lineStyle"
+                            android:background="@color/less_line_color"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_dididache">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_dididache"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_dididache"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+
+                        <View
+                            style="@style/lineStyle"
+                            android:background="@color/less_line_color"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(view)->moreAppActivity.onAppClick(view)}"
+                            android:orientation="horizontal"
+                            android:tag="@string/appurl_youbu">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@mipmap/appicon_youbu"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:maxLines="1"
+                                android:text="@string/app_youbu"
+                                android:textColor="@color/text_color"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

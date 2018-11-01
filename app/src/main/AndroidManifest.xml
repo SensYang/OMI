@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.omi"
+          android:installLocation="auto"><!--默认安装位置 自动选择-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/><!--读取手机状态-->
+    <uses-permission android:name="android.permission.INTERNET"/><!--连接网络-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/><!--允许程序访问有关GSM网络信息-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/><!--允许程序访问有关WIFI网络信息-->
+    <uses-permission android:name="android.permission.READ_LOGS"/><!--访问日志-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/><!--写SD卡权限-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/><!--读SD卡权限-->
+    <uses-permission android:name="android.permission.READ_CONTACTS"/><!--读取联系人-->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/><!--读取系统设置的数据库权限-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/><!--改变WIFI状态-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/><!--访问定位额外命令-->
+    <uses-permission android:name="android.permission.CALL_PHONE"/><!--打电话-->
+    <uses-permission android:name="android.permission.CAMERA"/><!--访问摄像头-->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/><!--允许挂载和反挂载文件系统可移动存储-->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/><!--允许应用程序修改全局声音设置-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>  <!-- 显示顶层浮窗 -->
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"/>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+
+    <application
+        android:name=".OmiApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/LauncherTheme">
+        <activity
+            android:name=".ui.activity.main.MainActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"/><!--主界面-->
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity><!--启动页-->
+        <activity android:name=".ui.activity.GuideActivity"/><!--引导页-->
+        <activity
+            android:name=".ui.activity.account.LoginActivity"
+            android:launchMode="singleTask"/><!--登录注册-->
+        <activity android:name=".ui.activity.account.FindPasswordActivity"/><!--找回密码-->
+        <activity
+            android:name=".ui.activity.dynamic.DynamicActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"/><!--动态-->
+        <activity
+            android:name=".ui.activity.chat.ChatActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"/><!--聊天-->
+        <activity android:name=".ui.activity.utils.amap.LocationSelectActivity"/><!--位置选择-->
+        <activity android:name=".ui.activity.search.SearchTypeActivity"/><!--搜索选择-->
+        <activity android:name=".ui.activity.search.SearchActivity"/><!--搜索-->
+        <activity android:name=".ui.activity.user.UserInfoActivity"/><!--用户资料-->
+        <activity android:name=".ui.activity.user.GroupInfoActivity"/>
+        <activity android:name=".ui.activity.user.RequestFriendActivity"/><!--申请加好友-->
+        <activity android:name=".ui.activity.contact.MyGroupActivity"/><!--我的群组-->
+        <activity android:name=".ui.activity.contact.NewFriendActivity"/><!--新的朋友-->
+        <activity android:name=".ui.activity.dynamic.PublishDynamicActivity"/>
+        <activity android:name=".ui.activity.user.SelfInfoActivity"/><!--设置个人资料-->
+        <activity android:name=".ui.activity.main.OmiFriendActivity"/>
+        <activity android:name=".ui.activity.phone.CallingActivity"/>
+        <activity android:name=".ui.activity.otherApp.MoreAppActivity"/>
+        <activity android:name=".ui.activity.near.NearPeopleActivity"/>
+        <activity android:name=".ui.activity.contact.CreatGroupActivity"/>
+        <!--________________________________ 充值 ________________________________-->
+        <activity android:name=".ui.activity.recharge.RechargePhoneActivity"/>
+        <activity android:name=".ui.activity.recharge.RechargeFlowActivity"/>
+        <!--________________________________ 工具 ________________________________-->
+        <activity android:name="com.xys.libzxing.zxing.activity.CaptureActivity"/><!--二维码-->
+        <activity android:name=".ui.activity.utils.ImageBrowseActivity"/>
+        <activity android:name=".ui.activity.utils.WebDetailActivity"/>
+        <!--________________________________ 广播监听 ________________________________-->
+        <receiver android:name=".receiver.PhoneReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+                <action android:name="android.intent.action.PHONE_STATE"/>
+            </intent-filter>
+        </receiver>
+        <!--________________________________ GlideModule ________________________________-->
+        <activity android:name=".ui.activity.more.SettingActivity"/><!--设置-->
+        <!--________________________________ GlideModule ________________________________-->
+        <meta-data
+            android:name="com.omi.config.glideconfig.MyGlideModule"
+            android:value="GlideModule"/>
+        <!--________________________________ 高德 ________________________________-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="14e21098543bd72f6f7ac4bc6a3d0541"/>
+        <!--________________________________ 友盟 ________________________________-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="58c8b27a75ca350f03001450"/>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${CHANNEL_VALUE}"/>
+        <!--________________________________ 腾讯Bugly ________________________________-->
+        <meta-data
+            android:name="BUGLY_APPID"
+            android:value="d5a3c51c5b"/><!-- 配置 APPID -->
+        <meta-data
+            android:name="BUGLY_APP_VERSION"
+            android:value="1.0"/><!-- 配置APP版本号 -->
+        <meta-data
+            android:name="BUGLY_APP_CHANNEL"
+            android:value="${CHANNEL_VALUE}"/><!-- 配置APP渠道号 -->
+        <meta-data
+            android:name="BUGLY_ENABLE_DEBUG"
+            android:value="false"/><!--配置Bugly调试模式-->
+        <!--________________________________ 环信 ________________________________-->
+        <!-- 设置环信应用的AppKey -->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="835106451#omi"/>
+        <!-- 声明SDK所需的service SDK核心功能-->
+        <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true"/>
+        <service
+            android:name="com.hyphenate.chat.EMJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <!-- 声明SDK所需的receiver -->
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+            <!-- 可选filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+            </intent-filter>
+        </receiver>
+        <!--____________________________ 支付宝 _____________________________-->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+    </application>
+</manifest>
